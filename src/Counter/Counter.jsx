@@ -6,7 +6,12 @@ export const Counter = () => {
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+      <button
+        data-testid="myTestButton"
+        onClick={() => setCount((prev) => prev + 1)}
+      >
+        Increment
+      </button>
     </div>
   );
 };

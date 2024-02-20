@@ -10,7 +10,7 @@ describe("Counter", () => {
 
   it("should increment the count", () => {
     render(<Counter />);
-    const button = screen.getByRole("button", { name: "Increment" });
+    const button = screen.getByTestId("myTestButton");
     fireEvent.click(button);
 
     const elementText = screen.getByText("Count: 1");
