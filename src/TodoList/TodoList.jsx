@@ -34,6 +34,7 @@ export default function TodoList({ initialTodos }) {
     return todos.map((todo, index) => (
       <li key={todo.id}>
         <input
+          data-testid={`toggleTodoCheckbox-${index + 1}`}
           type="checkbox"
           checked={todo.done}
           onChange={() => toggleTodo(todo.id)}

@@ -51,4 +51,19 @@ describe("TodoList", () => {
     // Optionally assert remaining todos if required
     expect(screen.getAllByRole("listitem")).toHaveLength(1);
   });
+
+  it("should toggle the first todo when its checkbox is clicked", () => {
+    render(<TodoList initialTodos={mockTodos} />);
+
+    // Query to find the checkbox for the first todo
+    const checkbox = screen.getByTestId("toggleTodoCheckbox-1");
+    // Assert initial todo is not checked
+    expect(checkbox).not.toBeChecked();
+
+    // Simulate checkbox click
+    fireEvent.click(checkbox);
+
+    // Assert initial todo is checked
+    expect(checkbox).toBeChecked();
+  });
 });
