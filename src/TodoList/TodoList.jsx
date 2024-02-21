@@ -1,11 +1,8 @@
 import { useState } from "react";
 import "./TodoList.css";
 
-export default function TodoList() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "Nauczyć się Reacta", done: false },
-    { id: 2, text: "Nauczyć się testować", done: false },
-  ]);
+export default function TodoList({ initialTodos }) {
+  const [todos, setTodos] = useState(initialTodos || []); // [1
 
   // Funkcja do generowania unikalnych identyfikatorów zadań
   const generateId = () => {

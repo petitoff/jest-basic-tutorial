@@ -2,8 +2,16 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import TodoList from "./TodoList";
 
 describe("TodoList", () => {
+  let mockTodos;
+  beforeEach(() => {
+    mockTodos = [
+      { id: 1, text: "Nauczyć się Reacta", done: false },
+      { id: 2, text: "Nauczyć się testować", done: false },
+    ];
+  });
+
   it("should render the list of initial todos", () => {
-    render(<TodoList />);
+    render(<TodoList initialTodos={mockTodos} />);
     const todoElements = screen.getAllByRole("listitem");
 
     expect(todoElements).toHaveLength(2);
@@ -12,7 +20,7 @@ describe("TodoList", () => {
   });
 
   it("should add a new todo", () => {
-    render(<TodoList />);
+    render(<TodoList initialTodos={mockTodos} />);
 
     const input = screen.getByTestId("todoInput");
     const button = screen.getByTestId("addTodoButton");
@@ -26,7 +34,7 @@ describe("TodoList", () => {
   });
 
   it("should delete the first todo when its delete button is clicked", () => {
-    render(<TodoList />);
+    render(<TodoList initialTodos={mockTodos} />);
 
     // Use more specific query to find the button for the first todo
     const deleteButton = screen.getByTestId("deleteTodoButton-1");
